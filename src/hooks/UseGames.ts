@@ -17,6 +17,7 @@ export interface Game {
   name: string;
   image: ImageURL;
   platforms: Platform[];
+  number_of_user_reviews: number;
 }
 
 interface FetchGamesResponse {
@@ -38,13 +39,13 @@ const UseGames = () => {
         setError(err.message);
       });
 
-    apiClient
-      .get("platforms/", { signal: controller.signal })
-      .then((res) => console.log(res.data.results))
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-      });
+    // apiClient
+    //   .get("platforms/", { signal: controller.signal })
+    //   .then((res) => console.log(res.data.results))
+    //   .catch((err) => {
+    //     if (err instanceof CanceledError) return;
+    //     setError(err.message);
+    //   });
 
     return () => controller.abort();
   }, []);
