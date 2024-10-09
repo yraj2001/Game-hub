@@ -6,10 +6,17 @@ export interface ImageURL {
   super_url: string;
 }
 
+export interface Platform {
+  id: number;
+  name: string;
+  abbreviation: string;
+}
+
 export interface Game {
   id: number;
   name: string;
   image: ImageURL;
+  platforms: Platform[];
 }
 
 interface FetchGamesResponse {
@@ -24,8 +31,16 @@ const UseGames = () => {
   useEffect(() => {
     const controller = new AbortController();
     apiClient
-      .get<FetchGamesResponse>("games", { signal: controller.signal })
+      .get<FetchGamesResponse>("games/", { signal: controller.signal })
       .then((res) => setGames(res.data.results))
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError(err.message);
+      });
+
+    apiClient
+      .get("platforms/", { signal: controller.signal })
+      .then((res) => console.log(res.data.results))
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
@@ -38,3 +53,5 @@ const UseGames = () => {
 };
 
 export default UseGames;
+
+// https://www.giantbomb.com/api/platform/[guid]/?api_key=[YOUR API KEY]
