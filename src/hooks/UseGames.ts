@@ -1,4 +1,5 @@
 import UseData from "./UseData";
+import { Genre } from "./UseGenres";
 
 export interface ImageURL {
   small_url: string;
@@ -18,7 +19,14 @@ export interface Game {
   number_of_user_reviews: number;
 }
 
-const UseGames = () => UseData<Game>("games/");
+const UseGames = (selectedGenre: Genre | null) =>
+  UseData<Game>(
+    "games/",
+    {
+      params: selectedGenre ? { filter: `genres:${selectedGenre.guid}` } : {},
+    },
+    [selectedGenre?.guid]
+  );
 
 export default UseGames;
 

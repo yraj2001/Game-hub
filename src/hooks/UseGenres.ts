@@ -9,8 +9,9 @@ export interface Genre {
   id: number;
   name: string;
   image: Image;
+  guid: string;
 }
 
-const UseGenres = () => UseData<Genre>("genres/");
+const UseGenres = () => UseData<Genre>("genres/", {}, []);
 
 export default UseGenres;
