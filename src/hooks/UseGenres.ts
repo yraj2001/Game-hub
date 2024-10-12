@@ -12,6 +12,6 @@ export interface Genre {
   guid: string;
 }
 
-const UseGenres = () => UseData<Genre>("genres/", {}, []);
+const UseGenres = () => UseData<Genre>("genres/");
 
 export default UseGenres;
