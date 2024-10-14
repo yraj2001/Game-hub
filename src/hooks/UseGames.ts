@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import UseData from "./UseData";
 import { Genre } from "./UseGenres";
 import { Platform } from "./UsePlatforms";
@@ -20,17 +21,15 @@ export interface Game {
   number_of_user_reviews: number;
 }
 
-const UseGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) => {
+const UseGames = (gameQuery: GameQuery) => {
   // Construct the filter string based on selected genre and platform
   const filters = [];
-  if (selectedGenre?.guid) filters.push(`genres:${selectedGenre.id}`);
-  if (selectedPlatform?.id) filters.push(`platforms:${selectedPlatform.id}`);
+  if (gameQuery.genre?.guid) filters.push(`genres:${gameQuery.genre.id}`);
+  if (gameQuery.platform?.id)
+    filters.push(`platforms:${gameQuery.platform.id}`);
 
   const filterString = filters.length > 0 ? filters.join(",") : undefined;
-  console.log(filters);
+  // console.log(filters);
 
   return UseData<Game>(
     "games/",
@@ -39,7 +38,7 @@ const UseGames = (
         filter: filterString, // Apply filters as a single string
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id] // Track dependencies
+    [gameQuery] // Track dependencies
   );
 };
 
