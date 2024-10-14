@@ -11,12 +11,12 @@ import { SiNintendo, SiPlaystation2, SiPlaystation3 } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { HStack, Icon, Text } from "@chakra-ui/react";
 
-import { Platform } from "../hooks/UseGames";
+import { Platforms } from "../hooks/UseGames";
 import { IconType } from "react-icons";
 import { color } from "framer-motion";
 
 interface Props {
-  platforms: Platform[];
+  platforms: Platforms[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
