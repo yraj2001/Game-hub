@@ -33,6 +33,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     MAC: FaApple,
     IPHN: MdPhoneIphone,
   };
+  if (!platforms) return null;
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => {
@@ -48,17 +49,3 @@ const PlatformIconList = ({ platforms }: Props) => {
 };
 
 export default PlatformIconList;
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-3/', id: 3, name: 'Game Boy', site_detail_url: 'https://www.giantbomb.com/game-boy/3045-3/', abbreviation: 'GB'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-4/', id: 4, name: 'Game Boy Advance', site_detail_url: 'https://www.giantbomb.com/game-boy-advance/3045-4/', abbreviation: 'GBA'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-5/', id: 5, name: 'Game Gear', site_detail_url: 'https://www.giantbomb.com/game-gear/3045-5/', abbreviation: 'GG'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-6/', id: 6, name: 'Genesis', site_detail_url: 'https://www.giantbomb.com/genesis/3045-6/', abbreviation: 'GEN'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-7/', id: 7, name: 'Atari Lynx', site_detail_url: 'https://www.giantbomb.com/atari-lynx/3045-7/', abbreviation: 'LYNX'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-8/', id: 8, name: 'Sega Master System', site_detail_url: 'https://www.giantbomb.com/sega-master-system/3045-8/', abbreviation: 'SMS'}
-
-// {api_detail_url: 'https://www.giantbomb.com/api/platform/3045-9/', id: 9, name: 'Super Nintendo Entertainment System', site_detail_url: 'https://www.giantbomb.com/super-nintendo-entertainment-system/3045-9/', abbreviation: 'SNES'}

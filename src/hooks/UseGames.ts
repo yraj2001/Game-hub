@@ -1,7 +1,5 @@
 import { GameQuery } from "../App";
 import UseData from "./UseData";
-import { Genre } from "./UseGenres";
-import { Platform } from "./UsePlatforms";
 
 export interface ImageURL {
   small_url: string;
@@ -36,6 +34,8 @@ const UseGames = (gameQuery: GameQuery) => {
     {
       params: {
         filter: filterString, // Apply filters as a single string
+        sort: gameQuery.sortOrder ? gameQuery.sortOrder : undefined, // apply sorting
+        limit: 25,
       },
     },
     [gameQuery] // Track dependencies
