@@ -30,11 +30,12 @@ const UseGames = (gameQuery: GameQuery) => {
   // console.log(filters);
 
   return UseData<Game>(
-    "games/",
+    gameQuery.searchText ? "search/" : "games/",
     {
       params: {
         filter: filterString, // Apply filters as a single string
         sort: gameQuery.sortOrder ? gameQuery.sortOrder : undefined, // apply sorting
+        query: gameQuery.searchText,
         limit: 25,
       },
     },
