@@ -1,3 +1,4 @@
+import generes from "../data/Genres";
 import UseData from "./UseData";
 
 interface Image {
@@ -12,6 +13,8 @@ export interface Genre {
   guid: string;
 }
 
-const UseGenres = () => UseData<Genre>("genres/");
+// const UseGenres = () => UseData<Genre>("genres/");
+
+const UseGenres = () => ({ data: generes, isLoading: false, error: null });
 
 export default UseGenres;
