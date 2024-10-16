@@ -27,10 +27,11 @@ const UseGames = (gameQuery: GameQuery) => {
     filters.push(`platforms:${gameQuery.platform.id}`);
 
   const filterString = filters.length > 0 ? filters.join(",") : undefined;
-  // console.log(filters);
+  console.log(filters);
 
   return UseData<Game>(
-    gameQuery.searchText ? "search/" : "games/",
+    // gameQuery.searchText ? "search/" :
+    "games/",
     {
       params: {
         filter: filterString, // Apply filters as a single string
